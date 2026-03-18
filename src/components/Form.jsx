@@ -2,18 +2,28 @@ import { useState } from "react";
 
 function Form(props) {
   const [name, setName] = useState('');
+  const [isTouched, setIsTouched] = useState(false);
 
-  // NOTE: As written, this function has a bug: it doesn't prevent the user
-  // from submitting an empty form. This is left as an exercise for developers
-  // working through MDN's React tutorial.
+  const isEmpty = name.trim() === "";
+  const showError = isTouched && isEmpty;
+
   function handleSubmit(event) {
     event.preventDefault();
-    props.addTask(name);
+    if (isEmpty) {
+      setIsTouched(true);
+      return;
+    }
+    props.addTask(name.trim());
     setName("");
+    setIsTouched(false);
   }
 
   function handleChange(event) {
     setName(event.target.value);
+  }
+
+  function handleBlur() {
+    setIsTouched(true);
   }
 
   return (
@@ -32,8 +42,21 @@ function Form(props) {
         autoComplete="off"
         value={name}
         onChange={handleChange}
+        onBlur={handleBlur}
+        aria-describedby={showError ? "new-todo-error" : undefined}
+        aria-invalid={showError || undefined}
       />
-      <button type="submit" className="btn btn__primary btn__lg">
+      {showError && (
+        <p id="new-todo-error" className="error-message" role="alert">
+          Please enter a task name.
+        </p>
+      )}
+      <button
+        type="submit"
+        className="btn btn__primary btn__lg"
+        disabled={isEmpty}
+        aria-disabled={isEmpty}
+      >
         Add
       </button>
     </form>
