@@ -205,6 +205,18 @@ body {
     font-size: 2.4rem;
   }
 }
+/* Form validation */
+.form-error {
+  color: #ca3c3c;
+  font-size: 1.4rem;
+  margin: 0.4rem 0 0.8rem;
+  padding: 0;
+}
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
 /* End general app styles */
 /* Todo item styles */
 .todo {
