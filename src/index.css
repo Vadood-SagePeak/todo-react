@@ -206,6 +206,17 @@ body {
   }
 }
 /* End general app styles */
+/* Form validation */
+.form-error {
+  color: #ca3c3c;
+  font-size: 1.4rem;
+  margin: 0.4rem 0 0.6rem;
+}
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+/* End form validation */
 /* Todo item styles */
 .todo {
   display: flex;
