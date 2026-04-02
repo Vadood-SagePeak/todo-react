@@ -294,3 +294,17 @@ body {
   opacity: 1;
 }
 /* End checkbox styles */
+/* Form validation styles */
+.input__error {
+  border-color: #ca3c3c;
+}
+.error-message {
+  color: #ca3c3c;
+  font-size: 1.4rem;
+  margin: 0.4rem 0 0.6rem;
+}
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+/* End form validation styles */
