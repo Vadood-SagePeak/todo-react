@@ -2,18 +2,25 @@ import { useState } from "react";
 
 function Form(props) {
   const [name, setName] = useState('');
+  const [touched, setTouched] = useState(false);
 
-  // NOTE: As written, this function has a bug: it doesn't prevent the user
-  // from submitting an empty form. This is left as an exercise for developers
-  // working through MDN's React tutorial.
+  const trimmedName = name.trim();
+  const isInvalid = touched && trimmedName === '';
+
   function handleSubmit(event) {
     event.preventDefault();
-    props.addTask(name);
+    if (trimmedName === '') {
+      setTouched(true);
+      return;
+    }
+    props.addTask(trimmedName);
     setName("");
+    setTouched(false);
   }
 
   function handleChange(event) {
     setName(event.target.value);
+    if (!touched) setTouched(true);
   }
 
   return (
@@ -27,13 +34,25 @@ function Form(props) {
       <input
         type="text"
         id="new-todo-input"
-        className="input input__lg"
+        className={`input input__lg${isInvalid ? ' input__error' : ''}`}
         name="text"
         autoComplete="off"
         value={name}
         onChange={handleChange}
+        aria-describedby={isInvalid ? "new-todo-error" : undefined}
+        aria-invalid={isInvalid || undefined}
       />
-      <button type="submit" className="btn btn__primary btn__lg">
+      {isInvalid && (
+        <p id="new-todo-error" className="error-message" role="alert">
+          Please enter a task name.
+        </p>
+      )}
+      <button
+        type="submit"
+        className="btn btn__primary btn__lg"
+        disabled={trimmedName === ''}
+        aria-disabled={trimmedName === ''}
+      >
         Add
       </button>
     </form>
