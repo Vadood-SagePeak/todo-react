@@ -192,6 +192,14 @@ body {
   border-color: #4d4d4d;
   box-shadow: inset 0 0 0 2px;
 }
+.input__error {
+  border-color: #ca3c3c;
+}
+.error-message {
+  color: #ca3c3c;
+  font-size: 1.4rem;
+  margin: 0.4rem 0 0.8rem;
+}
 [class*="__lg"] {
   display: inline-block;
   font-size: 1.9rem;
