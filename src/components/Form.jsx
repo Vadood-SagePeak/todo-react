@@ -2,18 +2,21 @@ import { useState } from "react";
 
 function Form(props) {
   const [name, setName] = useState('');
+  const [isDirty, setIsDirty] = useState(false);
 
-  // NOTE: As written, this function has a bug: it doesn't prevent the user
-  // from submitting an empty form. This is left as an exercise for developers
-  // working through MDN's React tutorial.
+  const isInvalid = name.trim() === '';
+
   function handleSubmit(event) {
     event.preventDefault();
-    props.addTask(name);
+    if (isInvalid) return;
+    props.addTask(name.trim());
     setName("");
+    setIsDirty(false);
   }
 
   function handleChange(event) {
     setName(event.target.value);
+    setIsDirty(true);
   }
 
   return (
@@ -32,8 +35,20 @@ function Form(props) {
         autoComplete="off"
         value={name}
         onChange={handleChange}
+        aria-describedby={isDirty && isInvalid ? "new-todo-error" : undefined}
+        aria-invalid={isDirty && isInvalid ? "true" : undefined}
       />
-      <button type="submit" className="btn btn__primary btn__lg">
+      {isDirty && isInvalid && (
+        <p id="new-todo-error" className="form-error" role="alert">
+          Task name cannot be empty.
+        </p>
+      )}
+      <button
+        type="submit"
+        className="btn btn__primary btn__lg"
+        disabled={isInvalid}
+        aria-disabled={isInvalid}
+      >
         Add
       </button>
     </form>
