@@ -294,3 +294,15 @@ body {
   opacity: 1;
 }
 /* End checkbox styles */
+/* Form validation styles */
+.form-error {
+  color: #ca3c3c;
+  font-size: 1.4rem;
+  margin: 0.4rem 0 0.8rem;
+}
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+/* End form validation styles */
