@@ -205,6 +205,23 @@ body {
     font-size: 2.4rem;
   }
 }
+/* Form validation styles */
+.input__error {
+  border-color: #ca3c3c;
+  box-shadow: inset 0 0 0 2px #ca3c3c;
+}
+.error-message {
+  color: #ca3c3c;
+  font-size: 1.4rem;
+  margin: 0.4rem 0 0.8rem;
+}
+.btn__primary:disabled {
+  background-color: #6d6d6d;
+  border-color: #6d6d6d;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+/* End form validation styles */
 /* End general app styles */
 /* Todo item styles */
 .todo {
