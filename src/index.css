@@ -205,6 +205,22 @@ body {
     font-size: 2.4rem;
   }
 }
+.input--error {
+  border-color: #ca3c3c;
+}
+.todo-form__error {
+  color: #ca3c3c;
+  font-size: 1.4rem;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0;
+}
+.btn__primary:disabled {
+  background-color: #6c6c6c;
+  border-color: #6c6c6c;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
 /* End general app styles */
 /* Todo item styles */
 .todo {
