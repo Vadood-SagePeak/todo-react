@@ -206,6 +206,13 @@ body {
   }
 }
 /* End general app styles */
+/* Validation error message */
+.error-message {
+  color: #ca3c3c;
+  font-size: 1.4rem;
+  margin: 0.4rem 0 0.8rem;
+}
+/* End validation error message */
 /* Todo item styles */
 .todo {
   display: flex;
